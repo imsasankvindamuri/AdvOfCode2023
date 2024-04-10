@@ -30,4 +30,30 @@ for i in allGames:
                 inver += ID
                 break
         count+=2
+
 print(sum-inver)
+summax = 0
+for i in allGames:
+    sum_b = 0
+    sum_r = 0
+    sum_g = 0
+    set = i.split()
+    ID = int(set[1][:-1])
+    set = set[2:]
+    count = 0
+    while count < len(set):
+        color = set[count+1]
+        if (bool(re.match(r'[a-zA-Z]$', color[-1]))==False):
+            color=color[:-1]
+        if (color == "blue"):
+            if int(set[count]) > sum_b:
+                sum_b = int(set[count])
+        if (color == "red"):
+            if int(set[count]) > sum_r:
+                sum_r = int(set[count])
+        if (color == "green"):
+            if int(set[count]) > sum_g:
+                sum_g = int(set[count])
+        count+=2
+    summax += ((sum_b)*(sum_r)*(sum_g))
+print(summax)
