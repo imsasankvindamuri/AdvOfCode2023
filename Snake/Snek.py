@@ -4,7 +4,7 @@ import random as r
 from time import sleep
 snake = [(4,4)]
 clear = lambda: os.system("cls")
-key = b'H'
+key = 0
 while True:
     apple = (r.randint(0,8),r.randint(0,8))
     if apple not in snake:
