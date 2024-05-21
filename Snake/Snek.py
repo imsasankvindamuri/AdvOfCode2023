@@ -25,7 +25,7 @@ while True:
     clear()
     for row in grid:
         print(" ".join(row))
-    sleep(1)
+    sleep(0.5)
     if m.kbhit():
         key = m.getch()
     if key == b'H':
