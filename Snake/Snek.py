@@ -1,8 +1,10 @@
 import os
 import msvcrt as m
 import random as r
+from time import sleep
 snake = [(4,4)]
 clear = lambda: os.system("cls")
+key = b'H'
 while True:
     apple = (r.randint(0,8),r.randint(0,8))
     if apple not in snake:
@@ -23,19 +25,25 @@ while True:
     clear()
     for row in grid:
         print(" ".join(row))
-    key = m.getch()
+    sleep(1)
+    if m.kbhit():
+        key = m.getch()
     if key == b'H':
         snake = [(snake[0][0]-1,snake[0][1])] + snake   
         snake.pop()
+        key = b'H'
     if key == b'P':
         snake = [(snake[0][0]+1,snake[0][1])] + snake
         snake.pop()
+        key == b'P'
     if key == b'K':
         snake = [(snake[0][0],snake[0][1]-1)] + snake
         snake.pop()
+        key == b'K'
     if key == b'M':
         snake = [(snake[0][0],snake[0][1]+1)] + snake
         snake.pop()
+        key == b'M'
     if key == b'\x1b':
         print("GAME OVER!!")
         exit()
