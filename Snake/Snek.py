@@ -1,12 +1,23 @@
 import os
 import msvcrt as m
-lst = [(4,4),(5,4),(6,4)]
+import random as r
+lst = [(4,4)]
 clear = lambda: os.system("cls")
-count = 0
 while True:
+    apple = (r.randint(0,8),r.randint(0,8))
+    if apple not in lst:
+        break
+while True:
+    if apple == lst[0]:
+        while True:
+            apple = (r.randint(0,8),r.randint(0,8))
+            if apple not in lst:
+                break
     grid = [["□" for i in range(9)] for j in range(9)]
     for i in range(9):
         for j in range(9):
+            if (i,j) == apple:
+                grid[i][j] = "◉"
             if (i,j) in lst:
                 grid[i][j] = "■"                        
     clear()
@@ -27,4 +38,5 @@ while True:
         lst.pop()
     if key == b'\x1b':
         exit()
-    count +=1
+    if apple == lst[0]:
+        lst = [apple] + lst
